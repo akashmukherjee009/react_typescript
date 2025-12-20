@@ -1,6 +1,6 @@
 function App() {
   let name: string;
-  let age: number;
+  let age: number | string; // Union Type
   let isStudent: boolean;
   let hobbies: string[];
   let role: [string, number]; //tuple
