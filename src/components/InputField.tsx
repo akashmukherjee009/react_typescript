@@ -7,10 +7,12 @@ interface Props {
   handleSubmit: (e: React.FormEvent) => void;
 }
 const InputField = ({ todo, setTodo, handleSubmit }: Props) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
   return (
     <div>
       <form action="" className="input">
         <input
+          ref={inputRef}
           type="input"
           className="input__box"
           placeholder="Enter a Task"
@@ -19,7 +21,10 @@ const InputField = ({ todo, setTodo, handleSubmit }: Props) => {
             setTodo(e.target.value);
           }}
         />
-        <button className="input_submit" onSubmit={handleSubmit}>
+        <button className="input_submit" onClick={e=>{
+          handleSubmit(e)
+          inputRef.current?.blur()
+        }} type="submit">
           Go
         </button>
       </form>
